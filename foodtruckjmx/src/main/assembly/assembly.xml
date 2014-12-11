@@ -1,0 +1,36 @@
+<assembly>
+	<id>jmx-client-install</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	
+	<files>
+		<file>
+			<source>target/foodtruckjmx.jar</source>
+			<outputDirectory>lib</outputDirectory>
+		</file>
+	</files>
+	
+	<fileSets>
+		<fileSet>
+			<directory>src/main/scripts/bin</directory>
+			<outputDirectory>bin</outputDirectory>
+		</fileSet>
+		
+		<fileSet>
+			<directory>src/main/conf</directory>
+			<outputDirectory>conf</outputDirectory>
+		</fileSet>
+		
+		<fileSet>
+			<directory>target/dependency</directory>
+			<outputDirectory>lib</outputDirectory>
+		</fileSet>
+		
+		<fileSet>
+			<directory>data</directory>
+			<outputDirectory>data</outputDirectory>
+		</fileSet>
+		
+	</fileSets>
+</assembly>

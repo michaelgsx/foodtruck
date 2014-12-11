@@ -1,0 +1,52 @@
+{
+  "id" : "food_truck_features",
+  "list" : [{
+    "id" : "7",
+    "company" : null,
+    "location" : "VALENCIA ST: 14TH ST to ROSA PARKS LN (300 - 337)",
+    "ll" : {
+      "lng" : -122.421782736139,
+      "lat" : 37.767126464778
+    }
+  }, {
+    "id" : "6",
+    "company" : null,
+    "location" : "VALENCIA ST: ROSA PARKS LN to 15TH ST (338 - 399)",
+    "ll" : {
+      "lng" : -122.422082620993,
+      "lat" : 37.7638580813603
+    }
+  }, {
+    "id" : "5",
+    "company" : null,
+    "location" : "VALENCIA ST: 16TH ST to 17TH ST (500 - 599)",
+    "ll" : {
+      "lng" : -122.421824199358,
+      "lat" : 37.7609571682785
+    }
+  }, {
+    "id" : "4",
+    "company" : null,
+    "location" : "VALENCIA ST: 18TH ST to 19TH ST (700 - 799)",
+    "ll" : {
+      "lng" : -122.387979956262,
+      "lat" : 37.7269507643782
+    }
+  }, {
+    "id" : "9",
+    "company" : null,
+    "location" : "UNION ST: DIVISADERO ST to BRODERICK ST (2600 - 2699)",
+    "ll" : {
+      "lng" : -122.406310586005,
+      "lat" : 37.7678824549751
+    }
+  }, {
+    "id" : "8",
+    "company" : null,
+    "location" : "UTAH ST: ALAMEDA ST to 15TH ST (100 - 199)",
+    "ll" : {
+      "lng" : -122.421788343116,
+      "lat" : 37.7674566391069
+    }
+  } ]
+}

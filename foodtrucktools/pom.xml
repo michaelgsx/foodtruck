@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>foodtruck-parent</artifactId>
+		<groupId>foodtruck</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	
+	<artifactId>foodtrucktools</artifactId>
+	<name>foodtrucktools</name>
+	<description>foodtrucktools</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8.7</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>foodtruck</groupId>
+			<artifactId>foodtruckcommon</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>LATEST</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.clerezza.ext</groupId>
+			<artifactId>org.json.simple</artifactId>
+			<version>0.4</version>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<finalName> ${project.artifactId} </finalName>
+		<plugins>
+			<plugin>
+				<artifactId>
+					maven-dependency-plugin
+				</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+						
+			<plugin>
+				<groupId>
+					org.apache.maven.plugins
+				</groupId>
+				<artifactId>
+					maven-compiler-plugin
+				</artifactId>
+				<version>2.0.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>
+							install
+						</phase>
+						<goals>
+							<goal>
+								single
+							</goal>
+						</goals>
+						<configuration>
+							<finalName> ${project.artifactId} </finalName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

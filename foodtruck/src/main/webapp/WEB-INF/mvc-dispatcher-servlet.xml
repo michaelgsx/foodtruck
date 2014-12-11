@@ -1,0 +1,55 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context 
+   	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+<!-- 	<context:component-scan base-package="uber.foodtruck.controller" /> -->
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+		
+	<bean id="dataManagerBean" class="uber.foodtruck.datamanager.DataManager" 
+		init-method="open"  destroy-method="close">
+		<property name="foodTruckFreatureFileName" value="/app/foodtruck/locations.dat" />
+	</bean>
+	
+	<bean id="foodTruckServiceBean" class="uber.foodtruck.controller.FoodTruckController"
+		init-method="open" destroy-method="close">
+		<property name="dataManager" ref="dataManagerBean" />
+	</bean>
+
+	<bean id="updateManagerBean" class="uber.foodtruck.jmx.UpdateManagerBeanContent" >
+		<property name="dataManager" ref="dataManagerBean" />
+	</bean>
+	
+	<bean id="mbeanServer" class="org.springframework.jmx.support.MBeanServerFactoryBean">
+        <property name="locateExistingServerIfPossible" value="true"/>
+    </bean>
+
+	<bean id="exporter" class="org.springframework.jmx.export.MBeanExporter"
+		lazy-init="false">
+		<property name="beans">
+			<map>
+				<entry key="foodtruck:name=updateManagerBean" value-ref="updateManagerBean" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="serverConnector"
+		class="org.springframework.jmx.support.ConnectorServerFactoryBean">
+		<property name="threaded" value="true" />
+		<property name="daemon" value="true" />
+		<property name="server" ref="mbeanServer" />
+		<property name="serviceUrl" value="service:jmx:jmxmp://localhost:9998" />
+	</bean>
+</beans>

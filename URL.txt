@@ -1,0 +1,2 @@
+http://localhost:8080/foodtruck-service/requestbyll/37.7251817007288,-122.388192688444/380.0
+http://localhost:8080/foodtruck-service/welcome
